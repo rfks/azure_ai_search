@@ -1,0 +1,21 @@
+{
+    "@odata.context": "https://s36rch.search.windows.net/$metadata#datasources/$entity",
+    "@odata.etag": "\"0x8DCE88F7A68967B\"",
+    "name": "document-datasource",
+    "description": null,
+    "type": "azureblob",
+    "subtype": null,
+    "credentials": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=st0r3;AccountKey=..."
+    },
+    "container": {
+      "name": "data",
+      "query": null
+    },
+    "dataChangeDetectionPolicy": null,
+    "dataDeletionDetectionPolicy": {
+      "@odata.type": "#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+    },
+    "encryptionKey": null,
+    "identity": null
+  }

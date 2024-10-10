@@ -1,0 +1,165 @@
+{
+    "name": "document-index",
+    "fields": [
+        {
+            "name": "chunk_id",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "stored": true,
+            "sortable": true,
+            "facetable": false,
+            "key": true,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": "keyword",
+            "normalizer": null,
+            "dimensions": null,
+            "vectorSearchProfile": null,
+            "vectorEncoding": null,
+            "synonymMaps": []
+        },
+        {
+            "name": "parent_id",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": true,
+            "retrievable": true,
+            "stored": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": null,
+            "normalizer": null,
+            "dimensions": null,
+            "vectorSearchProfile": null,
+            "vectorEncoding": null,
+            "synonymMaps": []
+        },
+        {
+            "name": "chunk",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "stored": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": null,
+            "normalizer": null,
+            "dimensions": null,
+            "vectorSearchProfile": null,
+            "vectorEncoding": null,
+            "synonymMaps": []
+        },
+        {
+            "name": "title",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "stored": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": null,
+            "normalizer": null,
+            "dimensions": null,
+            "vectorSearchProfile": null,
+            "vectorEncoding": null,
+            "synonymMaps": []
+        },
+        {
+            "name": "embedding",
+            "type": "Collection(Edm.Single)",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "stored": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": null,
+            "normalizer": null,
+            "dimensions": 3072,
+            "vectorSearchProfile": "vector-search-profile",
+            "vectorEncoding": null,
+            "synonymMaps": []
+        }
+    ],
+    "corsOptions": {
+        "allowedOrigins": [
+            "*"
+        ],
+        "maxAgeInSeconds": 60
+    },
+    "vectorSearch": {
+        "algorithms": [
+          {
+            "name": "algorithm",
+            "kind": "hnsw",
+            "hnswParameters": {
+              "metric": "cosine",
+              "m": 4,
+              "efConstruction": 400,
+              "efSearch": 500
+            },
+            "exhaustiveKnnParameters": null
+          }
+        ],
+        "profiles": [
+          {
+            "name": "vector-search-profile",
+            "algorithm": "algorithm",
+            "vectorizer": "document-vectorizer",
+            "compression": null
+          }
+        ],
+        "vectorizers": [
+          {
+            "name": "document-vectorizer",
+            "kind": "azureOpenAI",
+            "azureOpenAIParameters": {
+              "resourceUri": "https://0p3n-61.openai.azure.com",
+              "deploymentId": "text-embedding-3-large",
+              "apiKey": "<redacted>",
+              "modelName": "text-embedding-3-large",
+              "authIdentity": null
+            },
+            "customWebApiParameters": null,
+            "aiServicesVisionParameters": null,
+            "amlParameters": null
+          }
+        ],
+        "compressions": []
+      },
+      "semantic": {
+        "defaultConfiguration": "configuration",
+        "configurations": [
+          {
+            "name": "configuration",
+            "prioritizedFields": {
+              "titleField": {
+                "fieldName": "title"
+              },
+              "prioritizedContentFields": [
+                {
+                  "fieldName": "chunk"
+                }
+              ],
+              "prioritizedKeywordsFields": []
+            }
+          }
+        ]
+      }
+}

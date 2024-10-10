@@ -1,0 +1,32 @@
+{
+    "name": "document-indexer",
+    "description": null,
+    "dataSourceName": "document-datasource",
+    "skillsetName": "document-skillset",
+    "targetIndexName": "document-index",
+    "disabled": null,
+    "schedule": {
+      "interval": "PT1H",
+      "startTime": "2024-10-09T14:44:55.009Z"
+    },
+    "parameters": {
+      "batchSize": null,
+      "maxFailedItems": null,
+      "maxFailedItemsPerBatch": null,
+      "base64EncodeKeys": null,
+      "configuration": {
+        "dataToExtract": "contentAndMetadata",
+        "parsingMode": "default"
+      }
+    },
+    "fieldMappings": [
+      {
+        "sourceFieldName": "metadata_storage_name",
+        "targetFieldName": "title",
+        "mappingFunction": null
+      }
+    ],
+    "outputFieldMappings": [],
+    "cache": null,
+    "encryptionKey": null
+  }
