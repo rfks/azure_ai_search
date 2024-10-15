@@ -32,13 +32,19 @@ Use the **.json** files in the [search_management](search_management) folder for
 
 ### - [Index - index.json](https://portal.azure.com/#view/Microsoft_Azure_Search/IndexJsonEditor.ReactView/indexId/%2Fsubscriptions%2Fffe49fa3-196a-4fee-9c31-9fa6bfac4581%2FresourceGroups%2Feaseme%2Fproviders%2FMicrosoft.Search%2FsearchServices%2Fs36rch%23document-index)
 
+Please update the **connectionString** with the proper value from your storage account.
+
 ![Index](img/index.png)
 
 ### - [Skillset - skillset.json](https://portal.azure.com/#view/Microsoft_Azure_Search/SkillsBlade/resourceId/%2Fsubscriptions%2Fffe49fa3-196a-4fee-9c31-9fa6bfac4581%2FresourceGroups%2Feaseme%2Fproviders%2FMicrosoft.Search%2FsearchServices%2Fs36rch/regionId/eastus2/skillsetName/document-skillset/existingKeyDescription//existingKey/)
 
+The index references the Azure OpenAI deployment when creates the embedding for the search text, so please make sure the **apiKey** (under *vectorizers/azureOpenAIParameters* section) has the right value according to the created deployment.
+
 ![Skillset](img/skillset.json)
 
 ### - [Indexer - indexer.json](https://portal.azure.com/#view/Microsoft_Azure_Search/IndexerJsonEditor.ReactView/indexerId/%2Fsubscriptions%2Fffe49fa3-196a-4fee-9c31-9fa6bfac4581%2FresourceGroups%2Feaseme%2Fproviders%2FMicrosoft.Search%2FsearchServices%2Fs36rch%23document-indexer)
+
+Again, this should be updated with the embedder **apiKey** from the Azure OpenAI deployment for the 2nd skill to work.
 
 ![Indexer](img/indexer.png)
 ![Indexer Runs](img/indexer_runs.png)
